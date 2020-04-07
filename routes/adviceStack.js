@@ -1,12 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Header from '../shared/header';
-import Home from '../screens/Home';
+import Header from '../shared/header1';
+import Advice from '../screens/Advice';
 
-const HomeStack = createStackNavigator();
-export default function HomeNavigator() {
+const AdviceStack = createStackNavigator();
+const AdviceNavigator = () => {
   return (
-    <HomeStack.Navigator
+    <AdviceStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: '#67b0d6',
@@ -16,17 +16,18 @@ export default function HomeNavigator() {
           fontWeight: 'bold',
         },
       }}>
-      <HomeStack.Screen
-        name="Home"
-        component={Home}
+      <AdviceStack.Screen
+        name="Advice"
+        component={Advice}
         options={({navigation}) => {
           return {
             headerTitle: () => (
-              <Header navigation={navigation} title="eCommerce" />
+              <Header navigation={navigation} title="Our Advice" />
             ),
           };
         }}
       />
-    </HomeStack.Navigator>
+    </AdviceStack.Navigator>
   );
-}
+};
+export default AdviceNavigator;

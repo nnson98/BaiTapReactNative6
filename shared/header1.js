@@ -1,11 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Text, ImageBackground} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {Icon} from 'native-base';
 
 export default function Header1({navigation, title}) {
-  const openMenu = () => {
-    navigation.openDrawer();
-  };
   return (
     <View style={styles.header}>
       <Text style={styles.headerText}>{title}</Text>
@@ -27,7 +24,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   icon2: {
-    left: 120,
+    left: 180,
     fontSize: 20,
     padding: 6,
   },
