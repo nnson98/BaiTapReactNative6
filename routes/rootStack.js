@@ -6,6 +6,7 @@ import {View, Text, Icon} from 'native-base';
 import {StyleSheet, Image, ScrollView, TouchableOpacity} from 'react-native';
 import HomeNavigator from '../routes/homeStack';
 import AdviceNavigator from '../routes/adviceStack';
+import ProductWomanNavigator from '../routes/productWomanStack';
 const Drawer = createDrawerNavigator();
 
 export default function RootStack() {
@@ -17,6 +18,7 @@ export default function RootStack() {
         options>
         <Drawer.Screen name="Home" component={HomeNavigator} />
         <Drawer.Screen name="Advice" component={AdviceNavigator} />
+        <Drawer.Screen name="ProductWoman" component={ProductWomanNavigator} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -38,6 +40,14 @@ function CustomDrawerContent(props) {
           onPress={() => props.navigation.navigate('Advice')}>
           <Icon type="Entypo" name="home" style={styles.icon} />
           <Text style={styles.txtitem}>Our Advice </Text>
+        </TouchableOpacity>
+      </ScrollView>
+      <ScrollView style={styles.viewscrool}>
+        <TouchableOpacity
+          style={styles.viewtou}
+          onPress={() => props.navigation.navigate('ProductWoman')}>
+          <Icon type="Entypo" name="home" style={styles.icon} />
+          <Text style={styles.txtitem}>Product Woman </Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
