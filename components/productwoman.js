@@ -12,6 +12,7 @@ import {Icon} from 'native-base';
 import ColorAndSize from '../shared/colorandsize';
 import CustomTou from '../shared/customtou';
 import ShareOn from '../shared/shareon';
+import {Block} from 'galio-framework';
 export default function ProductNu({navigation}) {
   return (
     <View style={golbalStyles.container}>
@@ -27,16 +28,21 @@ export default function ProductNu({navigation}) {
             />
           </View>
           <View style={[styles.view2, golbalStyles.margin]}>
-            <Text>Green Blouse</Text>
+            <Text style={golbalStyles.fontsizetogether}>Green Blouse</Text>
             <TouchableOpacity style={styles.customTou}>
               <Text>$ 605.00</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.view1}>
-          <View style={golbalStyles.view}>
-            <Icon type="FontAwesome" name="plus" />
-            <Text>Description</Text>
+          <View
+            style={[
+              golbalStyles.view,
+              golbalStyles.margin,
+              golbalStyles.margin1,
+            ]}>
+            <Icon type="FontAwesome" name="plus" style={styles.icon} />
+            <Text style={golbalStyles.fontsizetogether}>Description</Text>
           </View>
         </View>
         <View style={styles.view1}>
@@ -78,7 +84,11 @@ export default function ProductNu({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={golbalStyles.margin}>
-          <Text>SHARE ON -------------</Text>
+          <View>
+            <Text style={golbalStyles.fontsizetogether}>SHARE ON </Text>
+            <Block style={styles.block} />
+          </View>
+
           <View style={[styles.view2, golbalStyles.margin]}>
             <ShareOn
               type="AntDesign"
@@ -105,6 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 10,
   },
   view2: {
     flexDirection: 'row',
@@ -123,6 +134,8 @@ const styles = StyleSheet.create({
     width: 70,
     borderRadius: 10,
     backgroundColor: '#bfbfc4',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   customAddCart: {
     height: 30,
@@ -130,5 +143,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#3a4144',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    fontSize: 24,
+    paddingRight: 20,
+  },
+  block: {
+    borderColor: 'red',
+    width: '80%',
+    borderWidth: StyleSheet.hairlineWidth,
+    marginHorizontal: 10,
   },
 });

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
   icon: {
-    left: 10,
+    left: 5,
   },
   headerImg: {
     width: 26,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   icon2: {
-    left: 90,
+    left: 70,
     fontSize: 20,
     padding: 6,
   },

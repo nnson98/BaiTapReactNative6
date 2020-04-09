@@ -1,15 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {SearchBar} from 'react-native-elements';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
-import Product from '../shared/product';
+import {
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native-gesture-handler';
 import {golbalStyles} from '../styles/global';
-import {Icon} from 'native-base';
 import Option from '../shared/options';
+import ItemProduct from '../shared/itemproduct';
 export default function ProductWoman({navigation}) {
-  return (
-    <View style={golbalStyles.container}>
-      <ScrollView>
+  const [data, setdata] = useState([
+    {
+      id: '1',
+      img: 'https://www.lulus.com/images/product/xlarge/1617074_261202.jpg',
+      name: 'Green Blouse',
+      price: '$ 348.00',
+    },
+    {
+      id: '2',
+      img:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR5-l7gVH4K3DXoeWtiKtNH3P0jBbG-atRXI5NDGDfWbNUAWt_q&usqp=CAU',
+      name: 'Salmon Shirt',
+      price: '$ 89.99',
+    },
+    {
+      id: '3',
+      img: 'https://www.lulus.com/images/product/xlarge/2897940_559982.jpg',
+      name: 'Red Dress',
+      price: '$ 552.00',
+    },
+    {
+      id: '4',
+      img:
+        'https://nexter.org/wp-content/uploads/2019/08/black-t-shirt-jeans-look-ideas-pic.jpg',
+      name: 'Black T-shirt & Jeans',
+      price: '$ 375.00',
+    },
+  ]);
+  const renderheader = () => {
+    return (
+      <View style={golbalStyles.container}>
         <View style={styles.viewsearch}>
           <SearchBar
             placeholder="Search a item..."
@@ -22,49 +53,18 @@ export default function ProductWoman({navigation}) {
           <Option name={'SIZE: M'} />
           <Option name={'SPRING'} />
         </View>
-        <View style={styles.view2}>
-          <TouchableOpacity
-            style={[styles.view1, styles.viewsearch]}
-            onPress={() => navigation.navigate('ProductNu')}>
-            <Product
-              img={
-                'https://www.lulus.com/images/product/xlarge/1617074_261202.jpg'
-              }
-              name={'Green Blouse'}
-              price={'348.00'}
-            />
-          </TouchableOpacity>
-          <View style={[styles.view1, styles.viewsearch]}>
-            <Product
-              img={
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR5-l7gVH4K3DXoeWtiKtNH3P0jBbG-atRXI5NDGDfWbNUAWt_q&usqp=CAU'
-              }
-              name={'Salmon Shirt'}
-              price={'89.99'}
-            />
-          </View>
-        </View>
-        <View style={styles.view2}>
-          <View style={[styles.view1, styles.viewsearch]}>
-            <Product
-              img={
-                'https://www.lulus.com/images/product/xlarge/2897940_559982.jpg'
-              }
-              name={'Red Dress'}
-              price={'552.00'}
-            />
-          </View>
-          <View style={[styles.view1, styles.viewsearch]}>
-            <Product
-              img={
-                'https://nexter.org/wp-content/uploads/2019/08/black-t-shirt-jeans-look-ideas-pic.jpg'
-              }
-              name={'Black T-shirt & Jeans'}
-              price={'375.00'}
-            />
-          </View>
-        </View>
-      </ScrollView>
+      </View>
+    );
+  };
+  return (
+    <View style={golbalStyles.container}>
+      <FlatList
+        data={data}
+        numColumns={2}
+        renderItem={({item}) => ItemProduct(item, {navigation})}
+        keyExtractor={item => item.id}
+        ListHeaderComponent={renderheader}
+      />
     </View>
   );
 }

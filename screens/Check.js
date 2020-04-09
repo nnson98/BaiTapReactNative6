@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Icon} from 'native-base';
+import React, {useState} from 'react';
+import {View, Text, Icon, Picker} from 'native-base';
 import {golbalStyles} from '../styles/global';
 import {
   StyleSheet,
@@ -7,9 +7,13 @@ import {
   ImageBackground,
   Button,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-export default function CheckOut() {
+import {CustomPicker} from 'react-native-custom-picker';
+export default function CheckOut({navigation}) {
+  const [data, setdata] = useState('TP.HCM');
+  const options = ['TP.HCM', 'Ha Noi', 'Da Nang', 'Phu Yen', 'Can Tho'];
   return (
     <View style={golbalStyles.container}>
       <ScrollView>
@@ -36,24 +40,63 @@ export default function CheckOut() {
           </View>
           <View style={[styles.position, styles.viewtou]}>
             <TouchableOpacity style={styles.customtou}>
-              <Text style={golbalStyles.fontsizetogether}>Aplly</Text>
+              <Text style={golbalStyles.txthear}>Aplly</Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
-          <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />
+          <CustomPicker
+            options={options}
+            onValueChange={value => setdata(value)}
+            placeholder="Select a Country"
+            style={golbalStyles.heightinput}
+          />
         </View>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
           <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />
         </View>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
-          <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />
+          <TextInput placeholder="Address" style={golbalStyles.heightinput} />
         </View>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
-          <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />
+          <TextInput
+            placeholder="Address line two"
+            style={golbalStyles.heightinput}
+          />
+        </View>
+        <View style={[global.margin, golbalStyles.margin1, golbalStyles.view]}>
+          <TextInput
+            placeholder="Postcode/ Zip"
+            style={[golbalStyles.heightinput, styles.picker]}
+          />
+          <TextInput
+            placeholder="Phone"
+            style={[golbalStyles.heightinput, styles.picker, {marginLeft: 20}]}
+          />
         </View>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
-          <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />
+          <TextInput
+            placeholder="Town/ City"
+            style={golbalStyles.heightinput}
+          />
+        </View>
+        <View style={[golbalStyles.margin, golbalStyles.margin1]}>
+          <TextInput
+            placeholder="E-mail Address"
+            style={golbalStyles.heightinput}
+          />
+        </View>
+        <View
+          style={[
+            golbalStyles.margin,
+            golbalStyles.margin1,
+            golbalStyles.item,
+          ]}>
+          <TouchableOpacity
+            style={golbalStyles.customTou}
+            onPress={() => navigation.navigate('Comfirm')}>
+            <Text style={golbalStyles.txthear}>NEXT . YOUR ORDER</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -99,5 +142,8 @@ const styles = StyleSheet.create({
   viewtou: {
     bottom: 50,
     left: 250,
+  },
+  picker: {
+    width: 180,
   },
 });

@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#333',
-    letterSpacing: 1,
   },
   icon2: {
-    left: 180,
+    left: 130,
     fontSize: 20,
     padding: 6,
   },

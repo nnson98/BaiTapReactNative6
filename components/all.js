@@ -1,13 +1,33 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {SearchBar} from 'react-native-elements';
-import {ScrollView} from 'react-native-gesture-handler';
-import Product2 from '../shared/product2';
+import {FlatList} from 'react-native-gesture-handler';
 import {golbalStyles} from '../styles/global';
+import RenderItem from '../shared/renderItem';
 export default function All() {
-  return (
-    <View style={golbalStyles.container}>
-      <ScrollView>
+  const [data, setdata] = useState([
+    {
+      id: '1',
+      img:
+        'https://i.pinimg.com/originals/6a/93/62/6a936214ca7d60e2b43a5a8d4d1fdba0.jpg',
+      name: 'SUMMER 2015',
+    },
+    {
+      id: '2',
+      img:
+        'https://i.pinimg.com/originals/a9/cf/48/a9cf48c6b9052a572b0287ecf060dbba.jpg',
+      name: 'WINTER 14/15',
+    },
+    {
+      id: '3',
+      img:
+        'https://i.pinimg.com/564x/c8/1e/36/c81e36d89c0354f89962de396ed31360.jpg',
+      name: 'PREMIUM',
+    },
+  ]);
+  const renderheader = () => {
+    return (
+      <View style={golbalStyles.container}>
         <View>
           <Image
             source={{
@@ -31,35 +51,20 @@ export default function All() {
             inputContainerStyle={golbalStyles.backgroundSearch}
           />
         </View>
-        <View style={styles.view2}>
-          <View style={[styles.view1, styles.viewsearch]}>
-            <Product2
-              img={
-                'https://i.pinimg.com/originals/6a/93/62/6a936214ca7d60e2b43a5a8d4d1fdba0.jpg'
-              }
-              name={'SUMMER 2015'}
-            />
-          </View>
-          <View style={[styles.view1, styles.viewsearch]}>
-            <Product2
-              img={
-                'https://i.pinimg.com/originals/a9/cf/48/a9cf48c6b9052a572b0287ecf060dbba.jpg'
-              }
-              name={'WINTER 14/15'}
-            />
-          </View>
-        </View>
-        <View style={[styles.view1, styles.viewsearch]}>
-          <Image
-            source={{
-              uri:
-                'https://i.pinimg.com/564x/c8/1e/36/c81e36d89c0354f89962de396ed31360.jpg',
-            }}
-            style={styles.imgcon1}
-          />
-          <Text>PREMIUM</Text>
-        </View>
-      </ScrollView>
+      </View>
+    );
+  };
+  return (
+    <View style={golbalStyles.container}>
+      <View style={styles.viewsearch}>
+        <FlatList
+          data={data}
+          numColumns={2}
+          renderItem={({item}) => RenderItem(item)}
+          keyExtractor={item => item.id}
+          ListHeaderComponent={renderheader}
+        />
+      </View>
     </View>
   );
 }

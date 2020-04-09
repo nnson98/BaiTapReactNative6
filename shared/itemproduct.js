@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-export default function RenderItem(item) {
+import {TouchableOpacity} from 'react-native-gesture-handler';
+export default function ItemProduct(item, {navigation}) {
   return (
     <View style={styles.view4}>
-      <Image source={{uri: item.img}} style={styles.imgflat} />
-      <Text style={styles.txtname}>{item.name}</Text>
-      <Text style={styles.txtprice}>{item.price}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('ProductNu')}>
+        <Image source={{uri: item.img}} style={styles.imgflat} />
+        <Text style={styles.txtname}>{item.name}</Text>
+        <Text style={styles.txtprice}>{item.price}</Text>
+      </TouchableOpacity>
     </View>
   );
 }
