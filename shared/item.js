@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-export default function RenderItem(item) {
+export default function Item(item) {
   return (
     <View style={styles.view4}>
       <Image source={{uri: item.img}} style={styles.imgflat} />

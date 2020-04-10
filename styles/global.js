@@ -4,6 +4,7 @@ export const golbalStyles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 30,
+    backgroundColor: '#e7e7e9',
   },
   imgbackground: {
     height: 180,
@@ -51,5 +52,8 @@ export const golbalStyles = StyleSheet.create({
   item: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  txtcolor: {
+    color: '#7e7e85',
   },
 });

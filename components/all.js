@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import {FlatList} from 'react-native-gesture-handler';
 import {golbalStyles} from '../styles/global';
-import RenderItem from '../shared/renderItem';
+import Item from '../shared/item';
 export default function All() {
   const [data, setdata] = useState([
     {
@@ -60,7 +60,7 @@ export default function All() {
         <FlatList
           data={data}
           numColumns={2}
-          renderItem={({item}) => RenderItem(item)}
+          renderItem={({item}) => Item(item)}
           keyExtractor={item => item.id}
           ListHeaderComponent={renderheader}
         />

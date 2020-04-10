@@ -10,7 +10,7 @@ import {
   Image,
 } from 'react-native';
 import {Icon} from 'native-base';
-import RenderItem from '../shared/renderItem';
+import Item from '../shared/item';
 import {SearchBar} from 'react-native-elements';
 import {golbalStyles} from '../styles/global';
 export default function Home({navigation}) {
@@ -78,7 +78,7 @@ export default function Home({navigation}) {
         <FlatList
           data={data}
           numColumns={2}
-          renderItem={({item}) => RenderItem(item)}
+          renderItem={({item}) => Item(item)}
           keyExtractor={item => item.id}
           ListHeaderComponent={renderheader}
         />
