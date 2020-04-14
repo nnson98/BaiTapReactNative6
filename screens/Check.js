@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Icon, Picker} from 'native-base';
 import {golbalStyles} from '../styles/global';
 import {
@@ -12,8 +12,8 @@ import {
 import {TextInput} from 'react-native-gesture-handler';
 import {CustomPicker} from 'react-native-custom-picker';
 export default function CheckOut({navigation}) {
-  const [data, setdata] = useState('TP.HCM');
-  const options = ['TP.HCM', 'Ha Noi', 'Da Nang', 'Phu Yen', 'Can Tho'];
+  const [selectedValue, setSelectedValue] = useState('');
+
   return (
     <View style={golbalStyles.container}>
       <ScrollView>
@@ -45,12 +45,18 @@ export default function CheckOut({navigation}) {
           </View>
         </ImageBackground>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
-          <CustomPicker
-            options={options}
-            onValueChange={value => setdata(value)}
-            placeholder="Select a Country"
+          <Picker
+            selectedValue={selectedValue}
             style={golbalStyles.heightinput}
-          />
+            placeholder="Select a country"
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }>
+            <Picker.Item label="Select a country" value="0" color={'red'} />
+            <Picker.Item label="TP.HCM" value="1" />
+            <Picker.Item label="Can Tho" value="2" />
+            <Picker.Item label="Phu Yen" value="3" />
+          </Picker>
         </View>
         <View style={[golbalStyles.margin, golbalStyles.margin1]}>
           <TextInput placeholder="Full Name" style={golbalStyles.heightinput} />

@@ -73,16 +73,14 @@ export default function Home({navigation}) {
     );
   };
   return (
-    <View style={golbalStyles.container}>
-      <View style={[styles.view1, golbalStyles.margin1]}>
-        <FlatList
-          data={data}
-          numColumns={2}
-          renderItem={({item}) => Item(item)}
-          keyExtractor={item => item.id}
-          ListHeaderComponent={renderheader}
-        />
-      </View>
+    <View style={[styles.view1, golbalStyles.margin1, golbalStyles.container]}>
+      <FlatList
+        data={data}
+        numColumns={2}
+        renderItem={({item}) => Item(item)}
+        keyExtractor={item => item.id}
+        ListHeaderComponent={renderheader}
+      />
     </View>
   );
 }

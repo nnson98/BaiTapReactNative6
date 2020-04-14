@@ -57,7 +57,7 @@ export default function Comfirm() {
               </TouchableOpacity>
             </View>
           </View>
-          <Block style={[styles.block,golbalStyles.margin]} />
+          <Block style={[styles.block, golbalStyles.margin]} />
           <View
             style={[
               golbalStyles.view,
